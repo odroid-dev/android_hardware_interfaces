@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017 The Android Open Source Project
+// Copyright (C) 2018 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,24 +15,13 @@
 //
 
 cc_test {
-    name: "VtsHalAudioV4_0TargetTest",
+    name: "VtsHalPowerV1_3TargetTest",
     defaults: ["VtsHalTargetTestDefaults"],
-    srcs: [
-        "AudioPrimaryHidlHalTest.cpp",
-        "ValidateAudioConfiguration.cpp"
-    ],
+    srcs: ["VtsHalPowerV1_3TargetTest.cpp"],
     static_libs: [
-        "android.hardware.audio.common.test.utility",
-        "android.hardware.audio@4.0",
-        "android.hardware.audio.common@4.0",
-        "libicuuc",
-        "libicuuc_stubdata",
-        "libxml2",
-    ],
-    shared_libs: [
-        "libfmq",
-    ],
-    header_libs: [
-        "android.hardware.audio.common.util@all-versions",
+        "android.hardware.power@1.0",
+        "android.hardware.power@1.1",
+        "android.hardware.power@1.2",
+        "android.hardware.power@1.3",
     ],
 }
