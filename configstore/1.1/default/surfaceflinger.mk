@@ -1,3 +1,4 @@
+LOCAL_C_INCLUDES := system/core/libcutils/include
 
 LOCAL_SRC_FILES += SurfaceFlingerConfigs.cpp
 

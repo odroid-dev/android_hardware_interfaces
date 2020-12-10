@@ -18,6 +18,7 @@
 
 #include <android/hardware/configstore/1.1/types.h>
 #include <log/log.h>
+#include <cutils/properties.h>
 
 namespace android {
 namespace hardware {
@@ -163,6 +164,23 @@ Return<void> SurfaceFlingerConfigs::primaryDisplayOrientation(
     specified = true;
     orientation = PRIMARY_DISPLAY_ORIENTATION;
 #endif
+
+    char sf_orientation[PROPERTY_VALUE_MAX];
+
+    property_get("ro.surface_flinger.primary_display_orientation", sf_orientation, "ORIENTATION_0");
+
+    if (strcmp(sf_orientation, "ORIENTATION_90") == 0) {
+        orientation = 90;
+        specified = true;
+    } else if (strcmp(sf_orientation, "ORIENTATION_180") == 0) {
+        orientation = 180;
+        specified = true;
+    } else if (strcmp(sf_orientation, "ORIENTATION_270") == 0) {
+        orientation = 270;
+        specified = true;
+    } else {
+        orientation = 0;
+    }
 
     switch (orientation) {
         case 0: {
